@@ -1,0 +1,15 @@
+Build:
+docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag alireaza/phpstorm:$(date -u +%Y%m%d) --tag alireaza/phpstorm .
+
+Run:
+docker run \
+--interactive \
+--tty \
+--rm \
+--mount="type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix" \
+--env="DISPLAY=$DISPLAY" \
+--device="/dev/dri:/dev/dri" \
+--env="TZ=$(cat /etc/timezone)" \
+--mount="type=bind,source=$(pwd)/udocker,target=/home/udocker" \
+--name="phpstorm" \
+alireaza/phpstorm
