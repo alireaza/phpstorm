@@ -1,8 +1,14 @@
-Build:
-docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag alireaza/phpstorm:$(date -u +%Y%m%d) --tag alireaza/phpstorm .
+# PHPStorm
 
-Run:
-docker run \
+## Build
+Via GitHub repository
+```bash
+$ docker build --tag alireaza/phpstorm:$(date -u +%Y%m%d) --tag alireaza/phpstorm:latest https://github.com/alireaza/phpstorm.git
+```
+
+## Run
+```bash
+$ docker run \
 --interactive \
 --tty \
 --rm \
@@ -13,3 +19,5 @@ docker run \
 --mount="type=bind,source=$(pwd)/udocker,target=/home/udocker" \
 --name="phpstorm" \
 alireaza/phpstorm
+```
+
